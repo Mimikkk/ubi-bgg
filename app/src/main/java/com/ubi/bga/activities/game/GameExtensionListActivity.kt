@@ -1,9 +1,10 @@
-package com.ubi.bga
+package com.ubi.bga.activities.game
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.ubi.bga.R
 
-class MainActivity : AppCompatActivity() {
+class GameExtensionListActivity : AppCompatActivity() {
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_main)
