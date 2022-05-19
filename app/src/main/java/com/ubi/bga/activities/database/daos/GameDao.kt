@@ -12,14 +12,14 @@ interface GameDao {
   fun read(id: Long): Game
 
   @Delete
-  fun remove(Game: Game)
+  fun remove(game: Game)
 
   @Update
-  fun update(vararg Games: Game)
+  fun update(vararg games: Game)
 
   @Insert
-  fun create(Game: Game): Long
+  fun create(game: Game): Long
 
   @Insert
-  fun create(vararg Games: Game): List<Long>
+  fun create(vararg games: Game): List<Long>
 }

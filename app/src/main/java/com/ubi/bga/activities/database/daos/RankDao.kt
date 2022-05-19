@@ -12,14 +12,14 @@ interface RankDao {
   fun read(id: Long): Rank
 
   @Delete
-  fun remove(Rank: Rank)
+  fun remove(rank: Rank)
 
   @Update
-  fun update(vararg Ranks: Rank)
+  fun update(vararg ranks: Rank)
 
   @Insert
-  fun create(Rank: Rank): Long
+  fun create(rank: Rank): Long
 
   @Insert
-  fun create(vararg Ranks: Rank): List<Long>
+  fun create(vararg ranks: Rank): List<Long>
 }

@@ -6,5 +6,7 @@ import androidx.room.PrimaryKey
 
 @Entity
 data class Rank(
+  val position: Int,
+  val score: Double,
   @PrimaryKey(autoGenerate = true) @NonNull val id: Long = 0,
 )

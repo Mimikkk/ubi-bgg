@@ -12,14 +12,14 @@ interface ExtensionDao {
   fun read(id: Long): Extension
 
   @Delete
-  fun remove(Extension: Extension)
+  fun remove(extension: Extension)
 
   @Update
-  fun update(vararg Extensions: Extension)
+  fun update(vararg extensions: Extension)
 
   @Insert
-  fun create(Extension: Extension): Long
+  fun create(extension: Extension): Long
 
   @Insert
-  fun create(vararg Extensions: Extension): List<Long>
+  fun create(vararg extensions: Extension): List<Long>
 }

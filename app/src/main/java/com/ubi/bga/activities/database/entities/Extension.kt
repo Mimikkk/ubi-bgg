@@ -6,5 +6,13 @@ import androidx.room.PrimaryKey
 
 @Entity
 data class Extension(
+  val primaryId: Long,
+  val title: String,
+  val thumbnail: String?,
+  val alternates: List<String>,
+  val description: String,
+  val published: Int,
+  val ranks: List<Rank>,
+  val BGGId: Long,
   @PrimaryKey(autoGenerate = true) @NonNull val id: Long = 0,
 )
