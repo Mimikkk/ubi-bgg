@@ -8,7 +8,6 @@ import androidx.room.PrimaryKey
 data class Game(
   val title: String,
   val thumbnail: String?,
-  val alternates: List<String>,
   val description: String,
   val published: Int,
   val BGGId: Long,

@@ -5,7 +5,7 @@ import com.ubi.bga.activities.database.daos.*
 import com.ubi.bga.activities.database.entities.*
 
 @Database(
-  entities = [Game::class, Extension::class, Rank::class],
+  entities = [Game::class, Extension::class, Rank::class, User::class],
   version = 1,
   exportSchema = false
 )
