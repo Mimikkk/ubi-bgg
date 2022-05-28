@@ -1,10 +1,12 @@
 package com.ubi.bga.activities
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.lifecycleScope
-import com.ubi.bga.R
-import kotlinx.coroutines.*
+import com.ubi.bga.databinding.ActivityMainBinding
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.withContext
 import org.xml.sax.Attributes
 import org.xml.sax.InputSource
 import org.xml.sax.helpers.DefaultHandler
@@ -12,11 +14,10 @@ import java.io.*
 import java.net.HttpURLConnection
 import java.net.HttpURLConnection.HTTP_OK
 import java.net.URL
-import java.util.stream.Collectors
 import javax.xml.parsers.SAXParserFactory
 
 class BGGThingResponseParser : DefaultHandler() {
-  public data class Rank(
+  data class Rank(
     var id: Int? = null,
     var name: String? = null,
     var value: Int? = null,
@@ -99,36 +100,49 @@ fun parseXml(xml: String): Any {
   return parser.thumbnail!!
 }
 
-object Service {
-  fun get(api: String): String? {
-    return try {
-      val connection = URL(api).openConnection() as HttpURLConnection
+object Connection {
+  fun get(url: String): String? {
+    val connection = URL(url).openConnection() as HttpURLConnection
+    connection.requestMethod = "GET"
+
+    return connection.connect().runCatching {
       return when (connection.responseCode) {
-        HTTP_OK -> connection.inputStream
-          .bufferedReader()
-          .lines()
-          .collect(Collectors.joining(System.lineSeparator()))
+        HTTP_OK -> connection.inputStream.bufferedReader().use { it.readText() }
         else -> null
       }
-    } catch (ignored: IOException) {
-      null
+    }.getOrNull().also {
+      connection.disconnect()
     }
   }
 }
 
+object BggThingService {
+  private const val Api = "https://www.boardgamegeek.com/xmlapi2/thing"
+
+  fun get(id: Int) = Connection.get("$Api?id=$id")
+}
+
 class MainActivity : AppCompatActivity() {
+  private lateinit var binding: ActivityMainBinding
+
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-    setContentView(R.layout.activity_main)
     Common.initialize(applicationContext)
 
-    val api = "https://boardgamegeek.com/xmlapi2/thing?id=154204&stats=1"
+    binding = ActivityMainBinding.inflate(layoutInflater)
+    setContentView(binding.root)
 
-    lifecycleScope.launch {
-      withContext(Dispatchers.IO) { println(Service.get(api)?.let { parseXml(it) }) }
+    binding.parseButton.setOnClickListener {
+      binding.thingId.text.toString().toIntOrNull()?.let {
+        runBlocking {
+          withContext(Dispatchers.IO) {
+            BggThingService.get(it)?.let {
+              parseXml(it)
+            }
+          }
+        }
+      }
+
     }
-
-    println("No maidens...")
   }
-
 }
