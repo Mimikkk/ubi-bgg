@@ -1,8 +1,13 @@
 package com.ubi.bga.activities
 
+import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
 import android.widget.Toast
+import android.widget.Toolbar
 import androidx.appcompat.app.AppCompatActivity
+import com.ubi.bga.R
+import com.ubi.bga.activities.game.LoginActivity
 import com.ubi.bga.databinding.ActivityMainBinding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runBlocking
@@ -116,10 +121,23 @@ object Connection {
   }
 }
 
+
+object BggSearchService {
+  private const val Api = "https://www.boardgamegeek.com/xmlapi2/search"
+
+  fun search(query: String) = Connection.get("$Api?query='$query'&type=boardgame")
+}
+
+object BggUserService {
+  private const val Api = "https://www.boardgamegeek.com/xmlapi2/collection"
+
+  fun get(username: String) = Connection.get("$Api?username='$username'&stats=1")
+}
+
 object BggThingService {
   private const val Api = "https://www.boardgamegeek.com/xmlapi2/thing"
 
-  fun get(id: Int) = Connection.get("$Api?id=$id")
+  fun get(id: Int) = Connection.get("$Api?id='$id'")
 }
 
 class MainActivity : AppCompatActivity() {
@@ -132,17 +150,37 @@ class MainActivity : AppCompatActivity() {
     binding = ActivityMainBinding.inflate(layoutInflater)
     setContentView(binding.root)
 
-    binding.parseButton.setOnClickListener {
-      binding.thingId.text.toString().toIntOrNull()?.let {
-        runBlocking {
-          withContext(Dispatchers.IO) {
-            BggThingService.get(it)?.let {
-              parseXml(it)
-            }
-          }
-        }
-      }
+    val toolbar = binding.toolbar.root
+    setSupportActionBar(toolbar)
+//    binding.username.setOnClickListener {
+//      binding.searchtext.toString().let {
+//        BggUserService.get(it)?.let { println(it) } ?: run {
+//          Toast.makeText(this, "User not found", Toast.LENGTH_SHORT).show()
+//        }
+//      }
+//    }
 
-    }
+//    binding.thing.setOnClickListener {
+//      binding.searchtext.toString().toIntOrNull()?.let {
+//        BggThingService.get(it)?.let { println(it) } ?: run {
+//          Toast.makeText(this, "Not found", Toast.LENGTH_SHORT).show()
+//        }
+//      } ?: run {
+//        println("Invalid ID")
+//      }
+//    }
+//
+//    binding.search.setOnClickListener {
+//      binding.searchtext.toString().let {
+//        BggSearchService.search(it)?.let { println(it) } ?: run {
+//          Toast.makeText(this, "Not found", Toast.LENGTH_SHORT).show()
+//        }
+//      }
+//    }
+  }
+
+  override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+    menuInflater.inflate(R.menu.toolbar_actions, menu)
+    return super.onCreateOptionsMenu(menu)
   }
 }

@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">BGG - Katalog</string>
+    <string name="action_synchronize">Synchronizacja</string>
+    <string name="action_clear">Wyczyść dane</string>
+    <string name="action_account">Ustawienia</string>
+    <string name="action_list">Lista gier użytkownika</string>
+</resources>
