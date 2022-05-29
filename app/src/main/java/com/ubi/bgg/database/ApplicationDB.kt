@@ -1,4 +1,4 @@
-package com.ubi.bgg.activities.database
+package com.ubi.bgg.database
 
 import androidx.room.*
 import com.ubi.bgg.activities.database.daos.*
