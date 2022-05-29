@@ -1,12 +1,110 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".activities.MainActivity" >
+    tools:context=".activities.MainActivity"
+    tools:ignore="NestedWeights">
 
-    <include layout="@layout/toolbar" android:id="@+id/toolbar" />
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0"
+        android:orientation="horizontal"
+        android:padding="8dp"
+        android:weightSum="1">
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.4"
+            android:text="@string/tooltip_username"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/Username"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.6"
+            android:text="@string/placeholder_loading"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0"
+        android:orientation="horizontal"
+        android:padding="8dp"
+        android:weightSum="1">
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.4"
+            android:text="@string/tooltip_game_count"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/GameCount"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.6"
+            android:text="@string/placeholder_loading"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0"
+        android:orientation="horizontal"
+        android:padding="8dp"
+        android:weightSum="1">
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.4"
+            android:text="@string/tooltip_expansion_count"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/ExpansionCount"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.6"
+            android:text="@string/placeholder_loading"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0"
+        android:orientation="horizontal"
+        android:padding="8dp"
+        android:weightSum="1">
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.4"
+            android:text="@string/tooltip_last_sync_date"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/LastSyncDate"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.6"
+            android:text="@string/placeholder_loading"
+            android:textSize="14sp" />
+    </LinearLayout>
 
 </LinearLayout>
