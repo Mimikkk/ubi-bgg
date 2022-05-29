@@ -1,8 +1,8 @@
-package com.ubi.bga.activities.config
+package com.ubi.bgg.activities.config
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.ubi.bga.R
+import com.ubi.bgg.R
 
 class ConfigurationActivity : AppCompatActivity() {
   override fun onCreate(savedInstanceState: Bundle?) {

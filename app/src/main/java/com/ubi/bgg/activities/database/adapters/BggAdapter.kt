@@ -1,7 +1,5 @@
-package com.ubi.bga.activities.database.adapters
+package com.ubi.bgg.activities.database.adapters
 
-import android.util.Xml
-import javax.xml.parsers.SAXParser
 import javax.xml.parsers.SAXParserFactory
 
 fun migrate(xml: String) {

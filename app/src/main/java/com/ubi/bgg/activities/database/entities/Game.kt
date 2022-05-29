@@ -1,4 +1,4 @@
-package com.ubi.bga.activities.database.entities
+package com.ubi.bgg.activities.database.entities
 
 import androidx.annotation.NonNull
 import androidx.room.Entity

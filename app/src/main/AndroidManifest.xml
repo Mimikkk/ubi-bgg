@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.ubi.bga">
+    package="com.ubi.bgg">
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/theme">
         <activity
-            android:name=".activities.MainActivity"
+            android:name="com.ubi.bgg.activities.MainActivity"
             android:exported="true"
             android:theme="@style/Theme.AppCompat.NoActionBar">
             <intent-filter>

@@ -1,8 +1,7 @@
-package com.ubi.bga.activities.database.entities
+package com.ubi.bgg.activities.database.entities
 
 import androidx.annotation.NonNull
 import androidx.room.*
-import java.sql.Date
 
 data class Owned(
   val games: Long,

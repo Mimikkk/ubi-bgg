@@ -1,8 +1,8 @@
-package com.ubi.bga.activities.game
+package com.ubi.bgg.activities.game
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.ubi.bga.R
+import com.ubi.bgg.R
 
 class LoginActivity : AppCompatActivity() {
   override fun onCreate(savedInstanceState: Bundle?) {

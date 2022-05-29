@@ -1,7 +1,7 @@
-package com.ubi.bga.activities.database.daos
+package com.ubi.bgg.activities.database.daos
 
 import androidx.room.*
-import com.ubi.bga.activities.database.entities.User
+import com.ubi.bgg.activities.database.entities.User
 
 @Dao
 interface UserDao {

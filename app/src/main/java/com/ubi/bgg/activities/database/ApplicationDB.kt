@@ -1,8 +1,8 @@
-package com.ubi.bga.activities.database
+package com.ubi.bgg.activities.database
 
 import androidx.room.*
-import com.ubi.bga.activities.database.daos.*
-import com.ubi.bga.activities.database.entities.*
+import com.ubi.bgg.activities.database.daos.*
+import com.ubi.bgg.activities.database.entities.*
 
 @Database(
   entities = [Game::class, Extension::class, Rank::class, User::class],

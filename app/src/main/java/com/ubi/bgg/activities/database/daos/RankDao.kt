@@ -1,7 +1,7 @@
-package com.ubi.bga.activities.database.daos
+package com.ubi.bgg.activities.database.daos
 
 import androidx.room.*
-import com.ubi.bga.activities.database.entities.Rank
+import com.ubi.bgg.activities.database.entities.Rank
 
 @Dao
 interface RankDao {

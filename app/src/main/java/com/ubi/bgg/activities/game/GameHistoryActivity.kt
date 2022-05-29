@@ -1,10 +1,10 @@
-package com.ubi.bga.activities.config
+package com.ubi.bgg.activities.game
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.ubi.bga.R
+import com.ubi.bgg.R
 
-class SynchronizationActivity : AppCompatActivity() {
+class GameHistoryActivity : AppCompatActivity() {
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_main)

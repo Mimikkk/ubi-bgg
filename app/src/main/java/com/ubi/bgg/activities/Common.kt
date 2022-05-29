@@ -1,9 +1,9 @@
-package com.ubi.bga.activities
+package com.ubi.bgg.activities
 
 import android.annotation.SuppressLint
 import android.content.Context
 import androidx.room.Room
-import com.ubi.bga.activities.database.ApplicationDB
+import com.ubi.bgg.activities.database.ApplicationDB
 
 @SuppressLint("StaticFieldLeak")
 internal object Common {
