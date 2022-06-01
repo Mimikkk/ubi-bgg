@@ -1,9 +1,7 @@
 package com.ubi.bgg.services.bgg.user
 
 import com.ubi.bgg.services.Connection
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runBlocking
-import kotlinx.coroutines.withContext
 import org.xml.sax.Attributes
 import org.xml.sax.InputSource
 import org.xml.sax.helpers.DefaultHandler
@@ -20,25 +18,17 @@ private class BGGLoginResponseParser : DefaultHandler() {
     attributes: Attributes,
   ) {
     this.attributes = attributes
-    if (query == "user") id = attr("id")?.toIntOrNull();
+    if (query == "user") id = attr("id")?.toIntOrNull()
   }
 
   private var attributes: Attributes? = null
-  private fun attr(name: String): String? = try {
-    attributes?.getValue(name)
-  } catch (ignored: RuntimeException) {
-    null
-  }
+  private fun attr(name: String): String? =
+    runCatching { attributes?.getValue(name) }.getOrNull()
 }
 
-private fun isUser(xml: String?): Boolean {
-  println(xml)
-  val sp = SAXParserFactory.newInstance().newSAXParser()
-  val parser = BGGLoginResponseParser()
-  sp.parse(InputSource(StringReader(xml)), parser)
-
-  return parser.id != null
-}
+private fun isUser(xml: String?): Boolean = BGGLoginResponseParser().apply {
+  SAXParserFactory.newInstance().newSAXParser().parse(InputSource(StringReader(xml)), this)
+}.id != null
 
 object BGGUserService {
   private const val Api = "https://www.boardgamegeek.com/xmlapi2"

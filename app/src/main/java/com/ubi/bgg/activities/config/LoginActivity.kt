@@ -38,5 +38,8 @@ class LoginActivity : AppCompatActivity() {
     login()
   }
 
-  private fun login() = startActivity(Intent(this, MainActivity::class.java))
+  private fun login() {
+    startActivity(Intent(this, MainActivity::class.java))
+    finish()
+  }
 }
