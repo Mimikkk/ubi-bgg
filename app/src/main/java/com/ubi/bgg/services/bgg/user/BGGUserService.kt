@@ -26,7 +26,7 @@ private class BGGLoginResponseParser : DefaultHandler() {
     runCatching { attributes?.getValue(name) }.getOrNull()
 }
 
-private fun isUser(xml: String?): Boolean = BGGLoginResponseParser().apply {
+private fun isUser(xml: String?) = BGGLoginResponseParser().apply {
   SAXParserFactory.newInstance().newSAXParser().parse(InputSource(StringReader(xml)), this)
 }.id != null
 

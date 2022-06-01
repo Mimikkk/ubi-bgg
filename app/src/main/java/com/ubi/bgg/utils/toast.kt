@@ -1,6 +1,5 @@
 package com.ubi.bgg.utils
 
-import android.view.Gravity
 import android.widget.Toast
 import com.ubi.bgg.Common
 

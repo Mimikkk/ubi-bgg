@@ -23,9 +23,7 @@ class LoginActivity : AppCompatActivity() {
     setContentView(binding.root)
 
     binding.bLogin.setOnClickListener { attemptLogin() }
-    if (Common.Preferences.getString("username", null) != null) {
-      login()
-    }
+    if (Common.Preferences.getString("username", null) != null) login()
   }
 
   private fun attemptLogin() {

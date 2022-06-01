@@ -1,7 +1,5 @@
 package com.ubi.bgg.activities
 
-import android.accounts.AccountManager
-import android.content.Context
 import android.os.Bundle
 import android.view.Menu
 import androidx.appcompat.app.AppCompatActivity
