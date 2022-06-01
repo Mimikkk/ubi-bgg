@@ -6,10 +6,7 @@ import com.ubi.bgg.activities.database.entities.User
 @Dao
 interface UserDao {
   @Query("select * from User")
-  fun readAll(): List<User>
-
-  @Query("select * from User where id = :id")
-  fun read(id: Long): User
+  fun read(): List<User>
 
   @Delete
   fun remove(user: User)
@@ -19,7 +16,4 @@ interface UserDao {
 
   @Insert
   fun create(user: User): Long
-
-  @Insert
-  fun create(vararg users: User): List<Long>
 }

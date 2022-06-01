@@ -3,6 +3,7 @@
     <string name="tooltip_last_sync_date">Data ostatniej synchronizacji</string>
     <string name="tooltip_expansion_count">liczba posiadanych dodatków</string>
     <string name="tooltip_game_count">Liczba posiadanych gier</string>
-    <string name="placeholder_loading">Ładowanie...</string>
+    <string name="placeholder_loading">Ładowanie…</string>
     <string name="tooltip_username">Nazwa użytkownika</string>
+    <string name="label_user_login">Logowanie użytkownika</string>
 </resources>
