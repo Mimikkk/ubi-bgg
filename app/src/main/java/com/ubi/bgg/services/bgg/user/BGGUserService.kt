@@ -9,17 +9,24 @@ import org.xml.sax.helpers.DefaultHandler
 import java.io.StringReader
 import javax.xml.parsers.SAXParserFactory
 
-
-private class BGGLoginResponseParser : XMLParser() {
+private fun isUser(xml: String?): Boolean = object : XMLParser() {
   var id: Int? = null
 
   override fun start(query: String?) {
     if (query == "user") id = attr("id")?.toIntOrNull()
   }
-}
+}.apply { parse(xml) }.id != null
 
-private fun isUser(xml: String?) =
-  BGGLoginResponseParser().apply { parse(xml) }.id != null
+private fun handleCollectionXML(xml: String?) = object : XMLParser() {
+
+  override fun start(query: String?) {
+
+  }
+
+  override fun end(query: String?) {
+
+  }
+}.apply { parse(xml) }
 
 object BGGUserService {
   private const val Api = "https://www.boardgamegeek.com/xmlapi2"
@@ -29,6 +36,6 @@ object BGGUserService {
   }
 
   fun collection(username: String) = runBlocking {
-    Connection.get("$Api/collection?username=$username&stats=1")
+    handleCollectionXML(Connection.get("$Api/collection?username=$username&stats=1"))
   }
 }

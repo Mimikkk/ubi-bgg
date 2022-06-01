@@ -6,7 +6,7 @@ import org.xml.sax.helpers.DefaultHandler
 import java.io.StringReader
 import javax.xml.parsers.SAXParserFactory
 
-internal abstract class XMLParser : DefaultHandler() {
+abstract class XMLParser : DefaultHandler() {
   companion object {
     fun <T : XMLParser> parse(parser: T, xml: String?) = parser.apply {
       SAXParserFactory.newInstance().newSAXParser().parse(InputSource(StringReader(xml)), this)
