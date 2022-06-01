@@ -9,6 +9,7 @@ import com.ubi.bgg.Common
 import com.ubi.bgg.activities.MainActivity
 import com.ubi.bgg.databinding.ActivityLoginBinding
 import com.ubi.bgg.services.bgg.user.BGGUserService
+import com.ubi.bgg.utils.showToast
 
 
 class LoginActivity : AppCompatActivity() {
@@ -38,10 +39,4 @@ class LoginActivity : AppCompatActivity() {
   }
 
   private fun login() = startActivity(Intent(this, MainActivity::class.java))
-}
-
-fun showToast(text: String) {
-  val toast = Toast.makeText(Common.Context, text, Toast.LENGTH_SHORT)
-  toast.setGravity(Gravity.TOP or Gravity.CENTER_HORIZONTAL, 0, 0)
-  toast.show()
 }
