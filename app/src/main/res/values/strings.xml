@@ -7,4 +7,5 @@
     <string name="tooltip_username">Nazwa użytkownika</string>
     <string name="title_login">Logowanie użytkownika</string>
     <string name="label_login">Zaloguj się</string>
+    <string name="title_synchronize">Synchronizacja...</string>
 </resources>

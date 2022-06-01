@@ -25,5 +25,20 @@
             android:name="com.ubi.bgg.activities.MainActivity"
             android:exported="false"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
+
+        <activity
+            android:name=".activities.config.SynchronizationActivity"
+            android:exported="true"
+            android:label="@string/title_synchronize"
+            android:parentActivityName=".activities.MainActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.PREFERENCE" />
+            </intent-filter>
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activities.MainActivity" />
+        </activity>
     </application>
 </manifest>
