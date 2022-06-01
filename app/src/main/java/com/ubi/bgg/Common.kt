@@ -44,7 +44,10 @@ internal object Common {
 
   fun remove(name: String) = Preferences.edit().remove(name).apply()
 
-  fun clear() = Preferences.edit().clear().apply()
+  fun clear() {
+    Preferences.edit().clear().apply()
+    Database.clearAllTables()
+  }
 
   fun initialize(context: Context) {
     Context = context
