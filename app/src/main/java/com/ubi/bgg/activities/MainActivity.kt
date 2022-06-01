@@ -13,7 +13,6 @@ class MainActivity : AppCompatActivity() {
   override fun onCreate(icicle: Bundle?) {
     super.onCreate(icicle)
     binding = ActivityMainBinding.inflate(layoutInflater)
-    Common.initialize(applicationContext)
 
     setSupportActionBar(binding.toolbar.root)
     setContentView(binding.root)

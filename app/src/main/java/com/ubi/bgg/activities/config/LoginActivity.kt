@@ -23,7 +23,7 @@ class LoginActivity : AppCompatActivity() {
     setContentView(binding.root)
 
     binding.bLogin.setOnClickListener { attemptLogin() }
-    if (Common.Preferences.getString("username", null) != null) login()
+    if (Common.contains("username")) login()
   }
 
   private fun attemptLogin() {
@@ -31,7 +31,7 @@ class LoginActivity : AppCompatActivity() {
     if (username.isBlank()) return showToast("Specify valid username")
     if (BGGUserService.exists(username).not()) return showToast("User does not exist")
 
-    Common.Preferences.edit().putString("username", username).apply()
+    Common.set("username", username)
     showToast("Login successful for $username")
     login()
   }
