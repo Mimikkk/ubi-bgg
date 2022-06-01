@@ -5,5 +5,6 @@
     <string name="tooltip_game_count">Liczba posiadanych gier</string>
     <string name="placeholder_loading">Ładowanie…</string>
     <string name="tooltip_username">Nazwa użytkownika</string>
-    <string name="label_user_login">Logowanie użytkownika</string>
+    <string name="title_login">Logowanie użytkownika</string>
+    <string name="label_login">Zaloguj się</string>
 </resources>

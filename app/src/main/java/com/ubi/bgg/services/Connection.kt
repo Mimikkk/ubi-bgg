@@ -1,16 +1,19 @@
 package com.ubi.bgg.services
 
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import java.net.HttpURLConnection
 import java.net.URL
 
+@Suppress("BlockingMethodInNonBlockingContext")
 object Connection {
-  fun get(url: String): String? {
+  suspend fun get(url: String): String? = withContext(Dispatchers.IO) {
     val connection = URL(url).openConnection() as HttpURLConnection
     connection.requestMethod = "GET"
 
-    return connection.connect().runCatching {
-      return when (connection.responseCode) {
-        HttpURLConnection.HTTP_OK -> connection.inputStream.bufferedReader().use { it.readText() }
+    return@withContext connection.connect().runCatching {
+      return@runCatching when (connection.responseCode) {
+        HttpURLConnection.HTTP_OK -> connection.inputStream.bufferedReader().readText()
         else -> null
       }
     }.getOrNull().also {
@@ -18,4 +21,3 @@ object Connection {
     }
   }
 }
-

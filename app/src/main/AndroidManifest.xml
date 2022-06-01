@@ -11,8 +11,9 @@
         android:supportsRtl="true"
         android:theme="@style/theme">
         <activity
-            android:name="com.ubi.bgg.activities.MainActivity"
+            android:name="com.ubi.bgg.activities.config.LoginActivity"
             android:exported="true"
+            android:label="@string/title_login"
             android:theme="@style/Theme.AppCompat.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,8 +22,8 @@
         </activity>
 
         <activity
-            android:name="com.ubi.bgg.activities.config.LoginActivity"
-            android:label="@string/label_user_login"
-            android:windowSoftInputMode="adjustResize|stateVisible" />
+            android:name="com.ubi.bgg.activities.MainActivity"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
     </application>
 </manifest>

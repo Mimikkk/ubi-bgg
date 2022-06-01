@@ -1,6 +1,7 @@
 package com.ubi.bgg.services.bgg.thing
 
 import com.ubi.bgg.services.Connection
+import kotlinx.coroutines.runBlocking
 import org.xml.sax.Attributes
 import org.xml.sax.InputSource
 import org.xml.sax.helpers.DefaultHandler
@@ -95,5 +96,5 @@ private fun parseXml(xml: String): Any {
 object BGGThingService {
   private const val Api = "https://www.boardgamegeek.com/xmlapi2/thing"
 
-  fun get(id: Int) = Connection.get("$Api?id='$id'")
+  fun get(id: Int) = runBlocking { Connection.get("$Api?id='$id'") }
 }
