@@ -34,7 +34,7 @@ object BGGUserService {
   private const val Api = "https://www.boardgamegeek.com/xmlapi2"
 
   fun exists(username: String) = runBlocking {
-    return@runBlocking isUser(Connection.get("$Api/users?name=$username").orEmpty())
+    isUser(Connection.get("$Api/users?name=$username").orEmpty())
   }
 
   fun get(username: String) = runBlocking {
