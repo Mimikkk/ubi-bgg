@@ -1,6 +1,7 @@
 package com.ubi.bgg.services.bgg.user
 
 import com.ubi.bgg.services.Connection
+import com.ubi.bgg.utils.XMLParser
 import kotlinx.coroutines.runBlocking
 import org.xml.sax.Attributes
 import org.xml.sax.InputSource
@@ -8,27 +9,17 @@ import org.xml.sax.helpers.DefaultHandler
 import java.io.StringReader
 import javax.xml.parsers.SAXParserFactory
 
-private class BGGLoginResponseParser : DefaultHandler() {
+
+private class BGGLoginResponseParser : XMLParser() {
   var id: Int? = null
 
-  override fun startElement(
-    uri: String?,
-    ignored: String?,
-    query: String?,
-    attributes: Attributes,
-  ) {
-    this.attributes = attributes
+  override fun start(query: String?) {
     if (query == "user") id = attr("id")?.toIntOrNull()
   }
-
-  private var attributes: Attributes? = null
-  private fun attr(name: String): String? =
-    runCatching { attributes?.getValue(name) }.getOrNull()
 }
 
-private fun isUser(xml: String?) = BGGLoginResponseParser().apply {
-  SAXParserFactory.newInstance().newSAXParser().parse(InputSource(StringReader(xml)), this)
-}.id != null
+private fun isUser(xml: String?) =
+  BGGLoginResponseParser().apply { parse(xml) }.id != null
 
 object BGGUserService {
   private const val Api = "https://www.boardgamegeek.com/xmlapi2"
@@ -37,7 +28,7 @@ object BGGUserService {
     isUser(Connection.get("$Api/users?name=$username").orEmpty())
   }
 
-  fun get(username: String) = runBlocking {
+  fun collection(username: String) = runBlocking {
     Connection.get("$Api/collection?username=$username&stats=1")
   }
 }

@@ -19,14 +19,13 @@ internal object Common {
   private val Preferences: SharedPreferences
     get() = Context.getSharedPreferences("Preferences", MODE_PRIVATE)
 
-  @Suppress("UNCHECKED_CAST")
-  fun <T> get(name: String, or: T? = null): T? =
-    if (contains(name).not()) or else when (or) {
-      is Int -> Preferences.getInt(name, or) as T
-      is Long -> Preferences.getLong(name, or) as T
-      is Float -> Preferences.getFloat(name, or) as T
-      is Boolean -> Preferences.getBoolean(name, or) as T
-      is String -> Preferences.getString(name, or) as T
+  inline fun <reified T> get(name: String, or: T? = null): T? =
+    if (contains(name).not()) or else when (T::class) {
+      Int::class -> Preferences.getInt(name, 0) as T?
+      Long::class -> Preferences.getLong(name, 0L) as T?
+      Float::class -> Preferences.getFloat(name, 0F) as T?
+      Boolean::class -> Preferences.getBoolean(name, false) as T?
+      String::class -> Preferences.getString(name, null) as T?
       else -> throw IllegalArgumentException("Unsupported type")
     }
 
