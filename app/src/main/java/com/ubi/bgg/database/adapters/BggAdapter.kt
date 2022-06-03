@@ -25,7 +25,7 @@ private fun migrate(thing: Thing) {
 
   val game = if (gameDAO.contains(thing.id!!)) gameDAO.read(thing.id!!) else game(thing)
 
-  if (gameDAO.contains(thing.id!!)) gameDAO.create(game)
+  if (!gameDAO.contains(thing.id!!)) gameDAO.create(game)
   if (thing.rank != null) Common.Database.ranks().create(rank(thing, game))
 
 }
