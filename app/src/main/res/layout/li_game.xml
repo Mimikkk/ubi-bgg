@@ -1,0 +1,62 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="?android:attr/listPreferredItemHeight"
+    android:padding="6dip">
+
+    <ImageView
+        android:id="@+id/icon"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="6dip"
+        android:contentDescription="@string/li_game_thumbnail"
+        android:src="@drawable/ic_image_placeholder" />
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/tv_description"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@id/icon"
+        android:gravity="center_vertical"
+        android:text="@string/placeholder_title"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/tv_year"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/tv_description"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@id/tv_title"
+        android:gravity="center"
+        android:text="@string/placeholder_year"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/tv_description"
+        android:layout_width="300dp"
+        android:layout_height="26dip"
+        android:layout_alignParentBottom="true"
+        android:layout_toEndOf="@id/icon"
+        android:ellipsize="marquee"
+        android:maxLines="1"
+        android:text="@string/placeholder_loading"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/tv_orderNo"
+        android:layout_width="100dp"
+        android:layout_height="26dip"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_toEndOf="@id/tv_description"
+        android:ellipsize="marquee"
+        android:maxLines="1"
+        android:text="@string/placeholder_order_no"
+        android:gravity="center"
+        android:textSize="16sp" />
+
+</RelativeLayout>
