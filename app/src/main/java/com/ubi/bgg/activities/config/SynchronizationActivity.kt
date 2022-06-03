@@ -7,6 +7,7 @@ import androidx.lifecycle.lifecycleScope
 import com.ubi.bgg.Common
 import com.ubi.bgg.R
 import com.ubi.bgg.database.adapters.migrate
+import com.ubi.bgg.databinding.ActivitySynchronizeBinding
 import com.ubi.bgg.services.bgg.user.BGGUserService
 import com.ubi.bgg.utils.Date
 import kotlinx.coroutines.Dispatchers
@@ -30,9 +31,14 @@ fun synchronize() {
 }
 
 class SynchronizationActivity : AppCompatActivity() {
+  private lateinit var binding: ActivitySynchronizeBinding
+
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-    setContentView(R.layout.activity_synchronize)
+    setContentView(binding.root)
+    binding = ActivitySynchronizeBinding.inflate(layoutInflater)
+
+    setSupportActionBar(binding.toolbar.root)
     Common.initialize(applicationContext)
 
     if (!Common.contains("last_sync") || Date.hasOneDayDifference(

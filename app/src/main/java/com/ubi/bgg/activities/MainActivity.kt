@@ -1,6 +1,5 @@
 package com.ubi.bgg.activities
 
-import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
@@ -12,9 +11,8 @@ import androidx.appcompat.app.AppCompatActivity
 import com.ubi.bgg.Common
 import com.ubi.bgg.R
 import com.ubi.bgg.activities.config.SynchronizationActivity
+import com.ubi.bgg.activities.game.GameListActivity
 import com.ubi.bgg.databinding.ActivityMainBinding
-
-fun moveToList() {}
 
 class MainActivity : AppCompatActivity() {
   private lateinit var binding: ActivityMainBinding
@@ -23,6 +21,7 @@ class MainActivity : AppCompatActivity() {
     super.onCreate(icicle)
     binding = ActivityMainBinding.inflate(layoutInflater)
     setSupportActionBar(binding.toolbar.root)
+
     setContentView(binding.root)
     Common.initialize(applicationContext)
 
@@ -41,7 +40,7 @@ class MainActivity : AppCompatActivity() {
     R.id.action_synchronize ->
       resultLauncher.launch(Intent(this, SynchronizationActivity::class.java)).run { true }
     R.id.action_clear -> clear().run { true }
-    R.id.action_list -> moveToList().run { true }
+    R.id.action_list -> moveToGameList().run { true }
     else -> super.onOptionsItemSelected(item)
   }
 
@@ -76,4 +75,6 @@ class MainActivity : AppCompatActivity() {
       .setIcon(android.R.drawable.ic_popup_disk_full)
       .show()
   }
+
+  private fun moveToGameList() = startActivity(Intent(this, GameListActivity::class.java))
 }

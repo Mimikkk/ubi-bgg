@@ -8,11 +8,6 @@
         android:title="@string/action_list"
         app:showAsAction="ifRoom|withText" />
     <item
-        android:id="@+id/action_account"
-        android:icon="@drawable/ic_account"
-        android:title="@string/action_account"
-        app:showAsAction="ifRoom|withText" />
-    <item
         android:id="@+id/action_synchronize"
         android:icon="@drawable/ic_synchronize"
         android:title="@string/action_synchronize"
