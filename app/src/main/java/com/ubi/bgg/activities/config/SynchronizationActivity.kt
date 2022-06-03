@@ -27,7 +27,7 @@ class SynchronizationActivity : AppCompatActivity() {
     setContentView(R.layout.activity_synchronize)
     Common.initialize(applicationContext)
 
-    if (!Common.contains("last_sync") || !Date.hasOneDayDifference(
+    if (!Common.contains("last_sync") || Date.hasOneDayDifference(
         Date.from(Common.get("last_sync")!!), LocalDateTime.now()
       )
     ) sync() else

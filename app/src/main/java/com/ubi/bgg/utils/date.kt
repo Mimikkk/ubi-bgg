@@ -13,9 +13,9 @@ object Date {
 
   fun format(date: LocalDateTime): String = date.format(DateTimeFormatter.ofPattern(Format))
 
-  fun from(string: String) = LocalDateTime.parse(string, DateTimeFormatter.ofPattern(Format))
+  fun from(string: String): LocalDateTime = LocalDateTime.parse(string, DateTimeFormatter.ofPattern(Format))
 
   fun hasOneDayDifference(date1: LocalDateTime, date2: LocalDateTime) =
-    Duration.between(date1, date2).toDays() > 1
+    Duration.between(date1, date2).toDays() > 0
 }
 
