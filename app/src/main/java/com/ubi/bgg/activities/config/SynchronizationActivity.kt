@@ -1,13 +1,12 @@
 package com.ubi.bgg.activities.config
 
-import android.content.DialogInterface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.lifecycleScope
 import com.ubi.bgg.Common
 import com.ubi.bgg.R
+import com.ubi.bgg.database.adapters.migrate
 import com.ubi.bgg.services.bgg.user.BGGUserService
 import com.ubi.bgg.utils.Date
 import kotlinx.coroutines.Dispatchers
@@ -17,7 +16,16 @@ import java.time.LocalDateTime
 
 fun synchronize() {
   val collection = BGGUserService.collection(Common.get("username")!!)
+  val games = collection.games
+  val expansions = collection.expansions
+  val basegames = games.filter { game -> expansions.find { game.id == it.id } == null }
 
+
+  migrate(games)
+
+  Common.set("game_count", games.size)
+  Common.set("basegame_count", basegames.size)
+  Common.set("expansion_count", expansions.size)
   Common.set("last_sync", Date.format(Date.local()))
 }
 

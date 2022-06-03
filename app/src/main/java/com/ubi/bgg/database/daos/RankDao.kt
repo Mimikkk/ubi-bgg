@@ -1,7 +1,7 @@
-package com.ubi.bgg.activities.database.daos
+package com.ubi.bgg.database.daos
 
 import androidx.room.*
-import com.ubi.bgg.activities.database.entities.Rank
+import com.ubi.bgg.database.entities.Rank
 
 @Dao
 interface RankDao {
@@ -13,6 +13,9 @@ interface RankDao {
 
   @Delete
   fun remove(rank: Rank)
+
+  @Delete
+  fun remove(rank: List<Rank>)
 
   @Update
   fun update(vararg ranks: Rank)

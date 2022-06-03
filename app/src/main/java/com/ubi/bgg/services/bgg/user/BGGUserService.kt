@@ -13,7 +13,7 @@ private fun isUser(xml: String?): Boolean = object : XMLParser() {
 }.apply { parse(xml) }.id != null
 
 data class Thing(
-  var id: Int? = null,
+  var id: Long? = null,
   var name: String? = null,
   var originalname: String? = null,
   var yearpublished: Int? = null,
@@ -29,7 +29,7 @@ private fun handleThingXML(xml: String?) = object : XMLParser() {
 
   override fun start(query: String?) {
     when (query) {
-      "item" -> item = Thing(attr("objectid")?.toInt())
+      "item" -> item = Thing(attr("objectid")?.toLong())
       "bayesaverage" -> item.bayesaverage = attr("value")?.toDoubleOrNull()
       "rank" -> if (attr("name") == "boardgame") item.rank = attr("value")?.toIntOrNull()
     }
@@ -47,6 +47,11 @@ private fun handleThingXML(xml: String?) = object : XMLParser() {
   }
 }.apply { parse(xml) }
 
+data class CollectionResponse(
+  val games: List<Thing>,
+  val expansions: List<Thing>
+)
+
 object BGGUserService {
   private const val Api = "https://www.boardgamegeek.com/xmlapi2"
 
@@ -55,10 +60,12 @@ object BGGUserService {
   }
 
   fun collection(username: String) = runBlocking {
-    fun handle(xml: String?): List<Any> = handleThingXML(xml).items
+    fun handle(xml: String?): List<Thing> = handleThingXML(xml).items
     fun url(subtype: String) = "$Api/collection?username=$username&subtype=$subtype&stats=1"
 
-    val games = handle(Connection.get(url("boardgame")))
-    val extensions = handle(Connection.get(url("boardgameexpansion")))
+    val games = handle(Connection.get(url("boardgame"))).toMutableList()
+    val expansions = handle(Connection.get(url("boardgameexpansion"))).toMutableList()
+
+    CollectionResponse(games, expansions)
   }
 }

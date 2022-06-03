@@ -51,6 +51,7 @@ class MainActivity : AppCompatActivity() {
 
   private fun rehydrate() {
     binding.GameCount.text = Common.get<Int>("game_count").toString()
+    binding.BaseGameCount.text = Common.get<Int>("basegame_count").toString()
     binding.ExpansionCount.text = Common.get<Int>("expansion_count").toString()
     binding.LastSyncDate.text = Common.get<String>("last_sync")
     binding.Username.text = Common.get<String>("username")

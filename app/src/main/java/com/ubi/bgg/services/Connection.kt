@@ -1,6 +1,8 @@
 package com.ubi.bgg.services
 
+import com.ubi.bgg.utils.showToast
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.withContext
 import java.net.HttpURLConnection
 import java.net.URL
@@ -14,6 +16,11 @@ object Connection {
     return@withContext connection.connect().runCatching {
       return@runCatching when (connection.responseCode) {
         HttpURLConnection.HTTP_OK -> connection.inputStream.bufferedReader().readText()
+        HttpURLConnection.HTTP_ACCEPTED -> {
+          showToast("Please wait, connection is accepted...")
+          delay(8000)
+          get(url)
+        }
         else -> null
       }
     }.getOrNull().also {

@@ -71,6 +71,30 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0.4"
+            android:text="@string/tooltip_basegame_count"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/BaseGameCount"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.6"
+            android:text="@string/placeholder_loading"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0"
+        android:orientation="horizontal"
+        android:padding="8dp"
+        android:weightSum="1">
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.4"
             android:text="@string/tooltip_expansion_count"
             android:textSize="14sp" />
 

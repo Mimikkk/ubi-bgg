@@ -8,4 +8,5 @@
     <string name="title_login">Logowanie użytkownika</string>
     <string name="label_login">Zaloguj się</string>
     <string name="title_synchronize">Synchronizacja...</string>
+    <string name="tooltip_basegame_count">Liczba posiadanych podstawek</string>
 </resources>
