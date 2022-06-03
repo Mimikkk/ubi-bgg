@@ -16,4 +16,5 @@
     <string name="placeholder_order_no">1</string>
     <string name="placeholder_title">Gra: Tytuł dwa, wersja długa</string>
     <string name="placeholder_ranking">ranking - 12</string>
+    <string name="placeholder_date">2015-12-12</string>
 </resources>

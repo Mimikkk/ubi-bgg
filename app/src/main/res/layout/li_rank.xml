@@ -1,0 +1,53 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="?android:attr/listPreferredItemHeight"
+    android:padding="6dip">
+
+    <TextView
+        android:id="@+id/tv_rank"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true"
+        android:gravity="center"
+        android:text="@string/placeholder_order_no"
+        android:textSize="42sp"
+        android:layout_marginEnd="6dip" />
+
+    <TextView
+        android:id="@+id/tv_date"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/tv_ranking"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@id/tv_rank"
+        android:gravity="center_vertical"
+        android:text="@string/placeholder_date"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/tv_ranking"
+        android:layout_width="300dp"
+        android:layout_height="26dip"
+        android:layout_alignParentBottom="true"
+        android:layout_toEndOf="@id/tv_rank"
+        android:ellipsize="marquee"
+        android:gravity="center_vertical"
+        android:maxLines="1"
+        android:text="@string/placeholder_ranking"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/tv_orderNo"
+        android:layout_width="100dp"
+        android:layout_height="26dip"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_toEndOf="@id/tv_ranking"
+        android:ellipsize="marquee"
+        android:gravity="center"
+        android:maxLines="1"
+        android:text="@string/placeholder_order_no"
+        android:textSize="16sp" />
+
+</RelativeLayout>
