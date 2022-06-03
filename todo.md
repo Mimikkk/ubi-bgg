@@ -1,0 +1,41 @@
+# TODO:
+
+Ekrany:
+
+- [ ] : Aktywności
+    - [ ] : Widok Synchronizacji
+        - [ ] : Potwierdź, Gdy mniej niż 1 dzień.
+        - [ ] : Data Synchronizacji
+        - [ ] : Przycisk synchronizacji
+        - [x] : Spinner podczas synchronizacji
+    - [x] : Spinner Synchronizacji
+    - [x] : Ekran główny
+        - [x] : Nazwa użytkownika
+        - [x] : Liczba posiadanych gier
+        - [x] : Liczba posiadanych dodatków
+        - [x] : Data synchronizacji
+    - [ ] : Ekran gier/dodatków
+        - [ ] : Lista gier/dodatków
+            - [ ] : Tytuł gry
+            - [ ] : Oryginalny tytuł gry
+            - [ ] : Rok wydania
+            - [ ] : Identyfikator w BGG
+            - [ ] : Miniaturka
+            - [ ] : Aktualna pozycja w rankingu ( N/D dla dodatków )
+        - [ ] : Akcja przejścia do ekranu z historią rankingu gry
+        - [ ] : Sortowanie według Alfabetycznie/Rankingu/Roku wydania
+    - [ ] : Ekran historii rankingu gier
+    - [x] : Logowanie użytkownika
+        - [x] : Zapis danych lokalnych użytkownika
+        - [x] : Synchronizacja po pierwszym logowaniu
+- [ ] : Toolbar
+    - [x] : Akcja przejdź do synchronizacji
+    - [ ] : Akcja wyczyść
+        - [ ] : Potwierdź
+        - [x] : Czyszczenie
+    - [ ] : Akcja Lista gier
+    - [x] : Akcja Użytkownik
+- [ ] : Funkcjonalności
+    - [x] : Połączenie z serwerem BGG
+    - [ ] : Migracja danych z BGG do lokalnej bazy
+    - [ ] : Aktualizacja bazy o nowy ranking
