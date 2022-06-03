@@ -13,7 +13,6 @@
         <activity
             android:name="com.ubi.bgg.activities.config.LoginActivity"
             android:exported="true"
-            android:label="@string/title_login"
             android:theme="@style/Theme.AppCompat.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
