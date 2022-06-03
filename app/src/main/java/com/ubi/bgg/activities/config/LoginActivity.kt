@@ -28,11 +28,11 @@ class LoginActivity : AppCompatActivity() {
 
   private fun attemptLogin() {
     val username = binding.tfLogin.text.toString()
-    if (username.isBlank()) return showToast("Specify valid username")
-    if (BGGUserService.exists(username).not()) return showToast("User does not exist")
+    if (username.isBlank()) return showToast("Nieprawidłowa nazwa użytkownika")
+    if (BGGUserService.exists(username).not()) return showToast("Użytkownik nie istnieje")
 
     Common.set("username", username)
-    showToast("Login successful for $username")
+    showToast("Poprawnie zalogowano $username")
     login()
   }
 

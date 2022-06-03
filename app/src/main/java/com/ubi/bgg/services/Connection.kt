@@ -17,7 +17,7 @@ object Connection {
       return@runCatching when (connection.responseCode) {
         HttpURLConnection.HTTP_OK -> connection.inputStream.bufferedReader().readText()
         HttpURLConnection.HTTP_ACCEPTED -> {
-          showToast("Please wait, connection is accepted...")
+          showToast("Proszę czekać, połączenie jest zaakceptowane...")
           delay(8000)
           get(url)
         }
