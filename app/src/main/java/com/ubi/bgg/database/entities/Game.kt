@@ -8,7 +8,7 @@ import androidx.room.PrimaryKey
 data class Game(
   val title: String,
   val thumbnail: String?,
-  val published: Int,
+  val published: Int?,
   val BGGId: Long,
   @PrimaryKey(autoGenerate = true) @NonNull val id: Long = 0,
 )

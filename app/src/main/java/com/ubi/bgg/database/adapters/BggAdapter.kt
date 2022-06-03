@@ -6,7 +6,21 @@ import com.ubi.bgg.database.entities.Game
 import com.ubi.bgg.services.bgg.user.Thing
 import com.ubi.bgg.utils.Date
 
-fun migrate(thing: Thing) {
+fun migrate(things: List<Thing>) {
+  val games = Common.Database.games().readAll()
+  val ranks = Common.Database.ranks().readAll()
+
+  games.forEach { game ->
+    if (!things.any { game.BGGId == it.id }) {
+      Common.Database.ranks().remove(ranks.filter { it.gameId == game.id })
+      Common.Database.games().remove(game)
+    }
+  }
+
+  things.forEach(::migrate)
+}
+
+private fun migrate(thing: Thing) {
   val gameDAO = Common.Database.games()
 
   val game = if (gameDAO.contains(thing.id!!)) gameDAO.read(thing.id!!) else game(thing)
@@ -14,20 +28,6 @@ fun migrate(thing: Thing) {
   if (gameDAO.contains(thing.id!!)) gameDAO.create(game)
   if (thing.rank != null) Common.Database.ranks().create(rank(thing, game))
 
-}
-
-fun migrate(things: List<Thing>): Unit {
-  val games = Common.Database.games().readAll()
-  val ranks = Common.Database.ranks().readAll()
-
-  games.parallelStream().forEach { game ->
-    if (!things.any { game.BGGId == it.id }) {
-      Common.Database.ranks().remove(ranks.filter { it.gameId == game.id })
-      Common.Database.games().remove(game)
-    }
-  }
-
-  things.parallelStream().forEach(::migrate)
 }
 
 private fun rank(thing: Thing, game: Game): Rank =
