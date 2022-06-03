@@ -4,7 +4,7 @@
     android:padding="6dip">
 
     <ImageView
-        android:id="@+id/icon"
+        android:id="@+id/iv_thumbnail"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_alignParentTop="true"
@@ -19,7 +19,7 @@
         android:layout_height="wrap_content"
         android:layout_above="@id/tv_rank"
         android:layout_alignParentTop="true"
-        android:layout_toEndOf="@id/icon"
+        android:layout_toEndOf="@id/iv_thumbnail"
         android:gravity="center_vertical"
         android:text="@string/placeholder_title"
         android:textSize="16sp" />
@@ -37,27 +37,39 @@
 
     <TextView
         android:id="@+id/tv_rank"
-        android:layout_width="300dp"
+        android:layout_width="200dp"
         android:layout_height="26dip"
         android:layout_alignParentBottom="true"
-        android:layout_toEndOf="@id/icon"
+        android:layout_toEndOf="@id/iv_thumbnail"
         android:ellipsize="marquee"
-        android:maxLines="1"
         android:gravity="center_vertical"
+        android:maxLines="1"
         android:text="@string/placeholder_ranking"
         android:textSize="12sp" />
 
     <TextView
-        android:id="@+id/tv_orderNo"
-        android:layout_width="100dp"
+        android:id="@+id/tv_score"
+        android:layout_width="50dp"
         android:layout_height="26dip"
-        android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_toEndOf="@id/tv_rank"
         android:ellipsize="marquee"
+        android:gravity="center"
+        android:maxLines="1"
+        android:text="@string/placeholder_score"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/tv_orderNo"
+        android:layout_width="match_parent"
+        android:layout_height="26dip"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_toEndOf="@id/tv_score"
+        android:ellipsize="marquee"
+        android:gravity="center"
         android:maxLines="1"
         android:text="@string/placeholder_order_no"
-        android:gravity="center"
         android:textSize="16sp" />
 
 </RelativeLayout>

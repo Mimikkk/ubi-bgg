@@ -35,8 +35,8 @@ class SynchronizationActivity : AppCompatActivity() {
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-    setContentView(binding.root)
     binding = ActivitySynchronizeBinding.inflate(layoutInflater)
+    setContentView(binding.root)
 
     setSupportActionBar(binding.toolbar.root)
     Common.initialize(applicationContext)

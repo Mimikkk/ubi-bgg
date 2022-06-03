@@ -56,10 +56,11 @@
         </activity>
 
         <activity
-            android:name=".activities.game.GameRankListActivity"
+            android:name=".activities.game.RankListActivity"
             android:exported="true"
             android:label="@string/title_game_rank_list"
-            android:parentActivityName=".activities.game.GameListActivity">
+            android:parentActivityName=".activities.game.GameListActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.PREFERENCE" />
