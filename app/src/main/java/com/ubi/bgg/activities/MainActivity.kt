@@ -1,17 +1,18 @@
 package com.ubi.bgg.activities
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.ubi.bgg.Common
 import com.ubi.bgg.R
 import com.ubi.bgg.activities.config.SynchronizationActivity
 import com.ubi.bgg.databinding.ActivityMainBinding
-import com.ubi.bgg.services.bgg.user.BGGUserService
-import com.ubi.bgg.utils.Date
 
 fun moveToList() {}
 
@@ -26,19 +27,19 @@ class MainActivity : AppCompatActivity() {
     Common.initialize(applicationContext)
 
     if (Common.contains("last_sync").not())
-      startActivity(Intent(this, SynchronizationActivity::class.java))
+      resultLauncher.launch(Intent(this, SynchronizationActivity::class.java))
 
     rehydrate()
   }
 
   override fun onActivityReenter(resultCode: Int, data: Intent?) {
-    super.onActivityReenter(resultCode, data)
     rehydrate()
+    super.onActivityReenter(resultCode, data)
   }
 
   override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
     R.id.action_synchronize ->
-      startActivity(Intent(this, SynchronizationActivity::class.java)).run { true }
+      resultLauncher.launch(Intent(this, SynchronizationActivity::class.java)).run { true }
     R.id.action_clear -> clear().run { true }
     R.id.action_list -> moveToList().run { true }
     else -> super.onOptionsItemSelected(item)
@@ -56,6 +57,11 @@ class MainActivity : AppCompatActivity() {
     binding.LastSyncDate.text = Common.get<String>("last_sync")
     binding.Username.text = Common.get<String>("username")
   }
+
+  private val resultLauncher: ActivityResultLauncher<Intent> =
+    registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+      rehydrate()
+    }
 
   private fun clear() {
     AlertDialog.Builder(this)

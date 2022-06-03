@@ -34,4 +34,4 @@ private fun rank(thing: Thing, game: Game): Rank =
   Rank(thing.rank!!, thing.bayesaverage!!, Date.format(Date.local()), game.id)
 
 private fun game(thing: Thing): Game =
-  Game(thing.name!!, thing.thumbnail, thing.yearpublished!!, thing.id!!)
+  Game(thing.name!!, thing.thumbnail, thing.yearpublished, thing.id!!)
