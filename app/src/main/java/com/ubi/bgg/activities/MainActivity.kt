@@ -20,10 +20,10 @@ class MainActivity : AppCompatActivity() {
   override fun onCreate(icicle: Bundle?) {
     super.onCreate(icicle)
     binding = ActivityMainBinding.inflate(layoutInflater)
-    setSupportActionBar(binding.toolbar.root)
-
-    setContentView(binding.root)
     Common.initialize(applicationContext)
+
+    setSupportActionBar(binding.toolbar.root)
+    setContentView(binding.root)
 
     if (Common.contains("last_sync").not())
       resultLauncher.launch(Intent(this, SynchronizationActivity::class.java))

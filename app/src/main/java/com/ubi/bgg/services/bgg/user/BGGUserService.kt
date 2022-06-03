@@ -43,6 +43,7 @@ private fun handleThingXML(xml: String?) = object : XMLParser() {
       "image" -> item.image = consumeText()
       "thumbnail" -> item.thumbnail = consumeText()
       "item" -> items.add(item)
+      "numplays", "comment" -> consumeText()
     }
   }
 }.apply { parse(xml) }

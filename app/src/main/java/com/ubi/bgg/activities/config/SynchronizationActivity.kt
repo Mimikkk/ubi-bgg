@@ -21,7 +21,6 @@ fun synchronize() {
   val expansions = collection.expansions
   val basegames = games.filter { game -> expansions.find { game.id == it.id } == null }
 
-
   migrate(games)
 
   Common.set("game_count", games.size)
@@ -36,10 +35,10 @@ class SynchronizationActivity : AppCompatActivity() {
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     binding = ActivitySynchronizeBinding.inflate(layoutInflater)
-    setContentView(binding.root)
+    Common.initialize(applicationContext)
 
     setSupportActionBar(binding.toolbar.root)
-    Common.initialize(applicationContext)
+    setContentView(binding.root)
 
     if (!Common.contains("last_sync") || Date.hasOneDayDifference(
         Date.from(Common.get("last_sync")!!), LocalDateTime.now()

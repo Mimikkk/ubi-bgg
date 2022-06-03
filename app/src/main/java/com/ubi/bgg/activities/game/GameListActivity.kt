@@ -39,16 +39,12 @@ class GameAdapter(private val context: Activity, private val list: List<Game>) :
     binding.tvYear.text = year(list[position].published)
 
     val ranks = Common.Database.games().ranks(list[position].id)
-    if (ranks.isNotEmpty()) {
-      val rank = ranks.first()
-      binding.tvRank.text = rank(rank.position)
-      binding.tvScore.text = score(rank.score)
-    }
+    val rank = ranks.firstOrNull()
+    binding.tvRank.text = rank(rank?.position)
+    binding.tvScore.text = score(rank?.score)
 
     return binding.root
   }
-
-  override fun getCount() = list.size
 
   private fun thumbnail(url: String) {
 
@@ -60,8 +56,8 @@ class GameAdapter(private val context: Activity, private val list: List<Game>) :
     }
   }
 
-  private fun year(year: Int?) = year?.toString() ?: "Nieznany"
-  private fun rank(rank: Int?) = "ranking - ${rank?.toString() ?: "-"}"
+  private fun year(year: Int?) = year?.toString() ?: "N/D"
+  private fun rank(rank: Int?) = "ranking - ${rank?.toString() ?: "nie oceniony"}"
 
   private fun score(score: Double?) = score?.let { "%.2f".format(score) } ?: "-"
 }
@@ -72,10 +68,10 @@ class GameListActivity : AppCompatActivity() {
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     binding = ActivityGameListBinding.inflate(layoutInflater)
-    setSupportActionBar(binding.toolbar.root)
-
-    setContentView(binding.root)
     Common.initialize(applicationContext)
+
+    setSupportActionBar(binding.toolbar.root)
+    setContentView(binding.root)
 
     binding.listview.isClickable = true
     val items = Common.Database.games().readAll()

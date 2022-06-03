@@ -32,14 +32,11 @@ class RankAdapter(private val context: Activity, private val list: List<Rank>) :
     binding.tvRank.text = list[position].position.toString()
     binding.tvScore.text = score(list[position].score)
     binding.tvDate.text = list[position].date
-    binding.tvRanking.text = rank(list[position].position)
 
     return binding.root
   }
 
   override fun getCount() = list.size
-
-  private fun rank(rank: Int?) = "ranking - ${rank?.toString() ?: "-"}"
 
   private fun score(score: Double?) = score?.let { "%.2f".format(score) } ?: "-"
 }
@@ -50,9 +47,9 @@ class RankListActivity : AppCompatActivity() {
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     binding = ActivityRankListBinding.inflate(layoutInflater)
-    setSupportActionBar(binding.toolbar.root)
-
     Common.initialize(applicationContext)
+
+    setSupportActionBar(binding.toolbar.root)
     setContentView(binding.root)
 
     val gameId = intent.getLongExtra("game_id", -1)

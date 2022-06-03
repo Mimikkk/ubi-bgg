@@ -19,6 +19,7 @@ class LoginActivity : AppCompatActivity() {
     super.onCreate(icicle)
     binding = ActivityLoginBinding.inflate(layoutInflater)
     Common.initialize(applicationContext)
+
     setSupportActionBar(binding.toolbar.root)
     setContentView(binding.root)
 
