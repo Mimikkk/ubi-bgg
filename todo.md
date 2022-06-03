@@ -3,10 +3,10 @@
 Ekrany:
 
 - [ ] : Aktywności
-    - [ ] : Widok Synchronizacji
-        - [ ] : Potwierdź, Gdy mniej niż 1 dzień.
-        - [ ] : Data Synchronizacji
-        - [ ] : Przycisk synchronizacji
+    - [x] : Widok Synchronizacji
+        - [x] : Potwierdź, Gdy mniej niż 1 dzień.
+        - [x] : Data Synchronizacji
+        - [x] : Przycisk synchronizacji
         - [x] : Spinner podczas synchronizacji
     - [x] : Spinner Synchronizacji
     - [x] : Ekran główny
@@ -16,11 +16,10 @@ Ekrany:
         - [x] : Data synchronizacji
     - [ ] : Ekran gier/dodatków
         - [ ] : Lista gier/dodatków
-            - [ ] : Tytuł gry
-            - [ ] : Oryginalny tytuł gry
-            - [ ] : Rok wydania
-            - [ ] : Identyfikator w BGG
-            - [ ] : Miniaturka
+            - [x] : Tytuł gry
+            - [x] : Rok wydania
+            - [x] : Identyfikator w BGG
+            - [x] : Miniaturka
             - [ ] : Aktualna pozycja w rankingu ( N/D dla dodatków )
         - [ ] : Akcja przejścia do ekranu z historią rankingu gry
         - [ ] : Sortowanie według Alfabetycznie/Rankingu/Roku wydania
@@ -28,14 +27,14 @@ Ekrany:
     - [x] : Logowanie użytkownika
         - [x] : Zapis danych lokalnych użytkownika
         - [x] : Synchronizacja po pierwszym logowaniu
-- [ ] : Toolbar
+- [x] : Toolbar
     - [x] : Akcja przejdź do synchronizacji
-    - [ ] : Akcja wyczyść
-        - [ ] : Potwierdź
+    - [x] : Akcja wyczyść
+        - [x] : Potwierdź
         - [x] : Czyszczenie
-    - [ ] : Akcja Lista gier
+    - [x] : Akcja Lista gier
     - [x] : Akcja Użytkownik
-- [ ] : Funkcjonalności
+- [x] : Funkcjonalności
     - [x] : Połączenie z serwerem BGG
-    - [ ] : Migracja danych z BGG do lokalnej bazy
-    - [ ] : Aktualizacja bazy o nowy ranking
+    - [x] : Migracja danych z BGG do lokalnej bazy
+    - [x] : Aktualizacja bazy o nowy ranking
