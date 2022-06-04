@@ -6,7 +6,6 @@ import android.content.Context.MODE_PRIVATE
 import android.content.SharedPreferences
 import androidx.room.Room
 import com.ubi.bgg.database.ApplicationDB
-import org.jetbrains.annotations.PropertyKey
 
 @SuppressLint("StaticFieldLeak")
 internal object Common {

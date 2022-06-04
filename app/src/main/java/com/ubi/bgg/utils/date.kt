@@ -1,7 +1,5 @@
 package com.ubi.bgg.utils
 
-import android.os.Build
-import androidx.annotation.RequiresApi
 import java.time.Duration
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter

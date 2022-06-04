@@ -5,15 +5,11 @@ import android.app.Activity
 import android.content.Intent
 import android.graphics.BitmapFactory
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
-import android.provider.ContactsContract.CommonDataKinds.Website.URL
 import android.view.*
 import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
 import com.ubi.bgg.Common
 import com.ubi.bgg.R
-import com.ubi.bgg.activities.config.SynchronizationActivity
 import com.ubi.bgg.database.entities.Game
 import com.ubi.bgg.databinding.ActivityGameListBinding
 import com.ubi.bgg.databinding.LiGameBinding

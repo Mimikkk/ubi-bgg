@@ -2,21 +2,18 @@ package com.ubi.bgg.activities.game
 
 import android.annotation.SuppressLint
 import android.app.Activity
-import android.graphics.BitmapFactory
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
-import android.view.*
+import android.view.LayoutInflater
+import android.view.Menu
+import android.view.View
+import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import androidx.appcompat.app.AppCompatActivity
 import com.ubi.bgg.Common
 import com.ubi.bgg.R
-import com.ubi.bgg.database.entities.Game
 import com.ubi.bgg.database.entities.Rank
 import com.ubi.bgg.databinding.ActivityRankListBinding
-import com.ubi.bgg.databinding.LiGameBinding
 import com.ubi.bgg.databinding.LiRankBinding
-import java.util.concurrent.Executors
 
 
 class RankAdapter(private val context: Activity, private val list: List<Rank>) :

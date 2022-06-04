@@ -1,11 +1,10 @@
 package com.ubi.bgg.activities.config
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.ubi.bgg.Common
-import com.ubi.bgg.R
 import com.ubi.bgg.database.adapters.migrate
 import com.ubi.bgg.databinding.ActivitySynchronizeBinding
 import com.ubi.bgg.services.bgg.user.BGGUserService
