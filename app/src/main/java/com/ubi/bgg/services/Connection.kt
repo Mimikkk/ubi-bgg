@@ -1,5 +1,7 @@
 package com.ubi.bgg.services
 
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import com.ubi.bgg.utils.showToast
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
@@ -26,5 +28,9 @@ object Connection {
     }.getOrNull().also {
       connection.disconnect()
     }
+  }
+
+  suspend fun fetchImage(url: String): Bitmap = withContext(Dispatchers.IO) {
+    BitmapFactory.decodeStream(URL(url).openConnection().getInputStream())
   }
 }
