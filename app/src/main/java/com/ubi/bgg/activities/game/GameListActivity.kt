@@ -8,14 +8,12 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.provider.ContactsContract.CommonDataKinds.Website.URL
-import android.view.LayoutInflater
-import android.view.Menu
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
 import com.ubi.bgg.Common
 import com.ubi.bgg.R
+import com.ubi.bgg.activities.config.SynchronizationActivity
 import com.ubi.bgg.database.entities.Game
 import com.ubi.bgg.databinding.ActivityGameListBinding
 import com.ubi.bgg.databinding.LiGameBinding
@@ -62,8 +60,16 @@ class GameAdapter(private val context: Activity, private val list: List<Game>) :
   private fun score(score: Double?) = score?.let { "%.2f".format(score) } ?: "-"
 }
 
+enum class SortType {
+  Alphabet,
+  Year,
+  Rank
+}
+
 class GameListActivity : AppCompatActivity() {
   private lateinit var binding: ActivityGameListBinding
+  private lateinit var items: MutableList<Game>
+  private lateinit var adapter: GameAdapter
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
@@ -73,12 +79,47 @@ class GameListActivity : AppCompatActivity() {
     setSupportActionBar(binding.toolbar.root)
     setContentView(binding.root)
 
+    items = Common.Database.games().readAll().toMutableList()
+    adapter = GameAdapter(this, items)
     binding.listview.isClickable = true
-    val items = Common.Database.games().readAll()
-    binding.listview.adapter = GameAdapter(this, items)
+    binding.listview.adapter = adapter
     binding.listview.setOnItemClickListener { _, _, position, _ ->
-      moveToRankList(items[position])
+      if (Common.Database.games().ranks(items[position].id)
+          .isNotEmpty()
+      ) moveToRankList(items[position])
     }
+  }
+
+  override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
+    R.id.action_sort_by_ranking ->
+      rehydrate(SortType.Rank).run { true }
+    R.id.action_sort_by_year ->
+      rehydrate(SortType.Year).run { true }
+    R.id.action_sort_alphabetically ->
+      rehydrate(SortType.Alphabet).run { true }
+    else -> super.onOptionsItemSelected(item)
+  }
+
+  override fun onPrepareOptionsMenu(menu: Menu?): Boolean {
+    supportActionBar?.setDisplayHomeAsUpEnabled(true)
+    supportActionBar?.setDisplayShowHomeEnabled(true)
+    return super.onPrepareOptionsMenu(menu)
+  }
+
+  override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+    menuInflater.inflate(R.menu.toolbar_list_actions, menu)
+    return super.onCreateOptionsMenu(menu)
+  }
+
+  private fun rehydrate(sortType: SortType) {
+    when (sortType) {
+      SortType.Alphabet -> items.sortBy { it.title }
+      SortType.Year -> items.sortByDescending { it.published }
+      SortType.Rank -> items.sortBy {
+        Common.Database.games().ranks(it.id).firstOrNull()?.position ?: Integer.MAX_VALUE
+      }
+    }
+    adapter.notifyDataSetChanged()
   }
 
   private fun moveToRankList(game: Game) {
@@ -86,12 +127,5 @@ class GameListActivity : AppCompatActivity() {
     intent.putExtra("game_id", game.id)
 
     startActivity(intent)
-  }
-
-  override fun onPrepareOptionsMenu(menu: Menu?): Boolean {
-    menu?.clear()
-    supportActionBar?.setDisplayHomeAsUpEnabled(true)
-    supportActionBar?.setDisplayShowHomeEnabled(true)
-    return super.onPrepareOptionsMenu(menu)
   }
 }

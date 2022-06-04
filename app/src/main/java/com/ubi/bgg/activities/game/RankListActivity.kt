@@ -27,7 +27,6 @@ class RankAdapter(private val context: Activity, private val list: List<Rank>) :
   override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
     binding = LiRankBinding.inflate(LayoutInflater.from(context), parent, false)
 
-
     binding.tvOrderNo.text = (position + 1).toString()
     binding.tvRank.text = list[position].position.toString()
     binding.tvScore.text = score(list[position].score)

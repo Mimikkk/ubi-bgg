@@ -12,7 +12,7 @@ interface GameDao {
   @Query("select * from Game where id = :id or BGGId = :id")
   fun read(id: Long): Game
 
-  @Query("select * from Rank where gameId = :id")
+  @Query("select * from Rank where gameId = :id order by id desc")
   fun ranks(id: Long): List<Rank>
 
   @Query("select exists (select 1 from Game where id = :id or BGGId = :id)")

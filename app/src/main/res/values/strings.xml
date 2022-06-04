@@ -18,4 +18,7 @@
     <string name="placeholder_ranking">ranking - 12</string>
     <string name="placeholder_date">2015-12-12</string>
     <string name="placeholder_score">7.13</string>
+    <string name="actions_sort_alphabetically">Sortuj alfabetycznie</string>
+    <string name="actions_sort_by_ranking">Sortuj według rankingu</string>
+    <string name="actions_sort_by_year">Sortuj według roku wydania</string>
 </resources>

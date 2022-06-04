@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/action_sort_by_ranking"
+        android:icon="@drawable/ic_numbers"
+        android:title="@string/actions_sort_by_ranking"
+        app:showAsAction="ifRoom|withText" />
+    <item
+        android:id="@+id/action_sort_by_year"
+        android:icon="@drawable/ic_years"
+        android:title="@string/actions_sort_by_year"
+        app:showAsAction="ifRoom|withText" />
+    <item
+        android:id="@+id/action_sort_alphabetically"
+        android:icon="@drawable/ic_letters"
+        android:title="@string/actions_sort_alphabetically"
+        app:showAsAction="ifRoom|withText" />
+</menu>
