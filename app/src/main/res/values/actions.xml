@@ -3,5 +3,5 @@
     <string name="action_synchronize">Synchronizacja</string>
     <string name="action_clear">Wyczyść dane</string>
     <string name="action_account">Ustawienia</string>
-    <string name="action_list">Lista gier użytkownika</string>
+    <string name="action_games">Lista gier użytkownika</string>
 </resources>

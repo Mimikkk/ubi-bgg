@@ -21,6 +21,7 @@ data class Thing(
   var thumbnail: String? = null,
   var bayesaverage: Double? = null,
   var rank: Int? = null,
+  var isExpansion: Boolean? = null,
 )
 
 private fun handleThingXML(xml: String?) = object : XMLParser() {
@@ -29,7 +30,10 @@ private fun handleThingXML(xml: String?) = object : XMLParser() {
 
   override fun start(query: String?) {
     when (query) {
-      "item" -> item = Thing(attr("objectid")?.toLong())
+      "item" -> {
+        item = Thing(attr("objectid")?.toLong())
+        item.isExpansion = attr("subtype") == "boardgameexpansion"
+      }
       "bayesaverage" -> item.bayesaverage = attr("value")?.toDoubleOrNull()
       "rank" -> if (attr("name") == "boardgame") item.rank = attr("value")?.toIntOrNull()
     }

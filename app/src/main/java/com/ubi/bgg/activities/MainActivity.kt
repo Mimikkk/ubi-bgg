@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.ubi.bgg.Common
 import com.ubi.bgg.R
 import com.ubi.bgg.activities.config.SynchronizationActivity
+import com.ubi.bgg.activities.game.ExpansionListActivity
 import com.ubi.bgg.activities.game.GameListActivity
 import com.ubi.bgg.databinding.ActivityMainBinding
 
@@ -40,7 +41,8 @@ class MainActivity : AppCompatActivity() {
     R.id.action_synchronize ->
       resultLauncher.launch(Intent(this, SynchronizationActivity::class.java)).run { true }
     R.id.action_clear -> clear().run { true }
-    R.id.action_list -> moveToGameList().run { true }
+    R.id.action_games -> moveToGameList().run { true }
+    R.id.expansion_list -> moveToExpansionList().run { true }
     else -> super.onOptionsItemSelected(item)
   }
 
@@ -77,4 +79,5 @@ class MainActivity : AppCompatActivity() {
   }
 
   private fun moveToGameList() = startActivity(Intent(this, GameListActivity::class.java))
+  private fun moveToExpansionList() = startActivity(Intent(this, ExpansionListActivity::class.java))
 }

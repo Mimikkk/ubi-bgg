@@ -20,7 +20,7 @@ fun synchronize() {
   val expansions = collection.expansions
   val basegames = games.filter { game -> expansions.find { game.id == it.id } == null }
 
-  migrate(games)
+  migrate(basegames + expansions)
 
   Common.set("game_count", games.size)
   Common.set("basegame_count", basegames.size)

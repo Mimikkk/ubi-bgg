@@ -54,6 +54,6 @@ internal object Common {
       Context,
       ApplicationDB::class.java,
       "users"
-    ).allowMainThreadQueries().build()
+    ).allowMainThreadQueries().fallbackToDestructiveMigration().build()
   }
 }

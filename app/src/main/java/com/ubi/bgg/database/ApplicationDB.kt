@@ -1,10 +1,12 @@
 package com.ubi.bgg.database
 
-import androidx.room.*
+import androidx.room.Database
+import androidx.room.RoomDatabase
 import com.ubi.bgg.database.daos.GameDao
 import com.ubi.bgg.database.daos.RankDao
 import com.ubi.bgg.database.entities.Game
 import com.ubi.bgg.database.entities.Rank
+
 
 @Database(
   entities = [Game::class, Rank::class],

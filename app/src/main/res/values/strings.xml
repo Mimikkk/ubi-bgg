@@ -9,7 +9,8 @@
     <string name="label_login">Zaloguj się</string>
     <string name="title_synchronize">Synchronizacja…</string>
     <string name="tooltip_basegame_count">Liczba posiadanych podstawek</string>
-    <string name="title_game_list">Lista gier i dodatków</string>
+    <string name="title_game_list">Lista gier</string>
+    <string name="title_expansion_list">Lista dodatków</string>
     <string name="title_game_rank_list">Historia rank gry</string>
     <string name="li_game_thumbnail">game thumbnail</string>
     <string name="placeholder_year">2022</string>
@@ -21,4 +22,5 @@
     <string name="actions_sort_alphabetically">Sortuj alfabetycznie</string>
     <string name="actions_sort_by_ranking">Sortuj według rankingu</string>
     <string name="actions_sort_by_year">Sortuj według roku wydania</string>
+    <string name="action_expansions">Lista dodatków użytkownika</string>
 </resources>

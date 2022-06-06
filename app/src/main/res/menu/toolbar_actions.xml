@@ -3,9 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/action_list"
+        android:id="@+id/action_games"
         android:icon="@drawable/ic_list"
-        android:title="@string/action_list"
+        android:title="@string/action_games"
+        app:showAsAction="ifRoom|withText" />
+    <item
+        android:id="@+id/expansion_list"
+        android:icon="@drawable/ic_list"
+        android:title="@string/action_expansions"
         app:showAsAction="ifRoom|withText" />
     <item
         android:id="@+id/action_synchronize"

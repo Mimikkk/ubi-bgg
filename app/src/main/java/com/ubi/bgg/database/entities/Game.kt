@@ -10,5 +10,6 @@ data class Game(
   val thumbnail: String?,
   val published: Int?,
   val BGGId: Long,
+  val isExpansion: Boolean,
   @PrimaryKey(autoGenerate = true) @NonNull val id: Long = 0,
 )

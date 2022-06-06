@@ -1,8 +1,8 @@
 package com.ubi.bgg.database.adapters
 
 import com.ubi.bgg.Common
-import com.ubi.bgg.database.entities.Rank
 import com.ubi.bgg.database.entities.Game
+import com.ubi.bgg.database.entities.Rank
 import com.ubi.bgg.services.bgg.user.Thing
 import com.ubi.bgg.utils.Date
 
@@ -32,5 +32,7 @@ private fun migrate(thing: Thing) {
 private fun rank(thing: Thing, game: Game): Rank =
   Rank(thing.rank!!, thing.bayesaverage!!, Date.format(Date.local()), game.id)
 
-private fun game(thing: Thing): Game =
-  Game(thing.name!!, thing.thumbnail, thing.yearpublished, thing.id!!)
+private fun game(thing: Thing): Game {
+  println("${thing.name} (${thing.isExpansion})")
+  return Game(thing.name!!, thing.thumbnail, thing.yearpublished, thing.id!!, thing.isExpansion!!)
+}
