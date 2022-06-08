@@ -4,6 +4,8 @@ import android.annotation.SuppressLint
 import android.app.Activity
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.os.Handler
+import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,10 +14,13 @@ import com.ubi.bgg.Common
 import com.ubi.bgg.R
 import com.ubi.bgg.database.entities.Game
 import com.ubi.bgg.databinding.LiGameBinding
+import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withContext
 import java.net.URL
+import kotlin.concurrent.thread
+
 
 class GameAdapter(private val context: Activity, private val list: List<Game>) :
   ArrayAdapter<Game>(context, R.layout.li_game, list) {
@@ -25,10 +30,18 @@ class GameAdapter(private val context: Activity, private val list: List<Game>) :
   override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
     binding = LiGameBinding.inflate(LayoutInflater.from(context), parent, false)
 
-    if (thumbnails.containsKey(position).not() && list[position].thumbnail != null)
-      thumbnails[position] = thumbnail(list[position].thumbnail!!)
+    if (thumbnails.containsKey(position).not() && list[position].thumbnail != null) {
+      thread {
+        thumbnails[position] = thumbnail(list[position].thumbnail!!)
+        Handler(Looper.getMainLooper()).post {
+          notifyDataSetChanged()
+        }
 
-    binding.ivThumbnail.setImageBitmap(thumbnails[position])
+      }
+    }
+
+    if (thumbnails.containsKey(position))
+      binding.ivThumbnail.setImageBitmap(thumbnails[position])
     binding.tvOrderNo.text = (position + 1).toString()
     binding.tvTitle.text = list[position].title
     binding.tvYear.text = year(list[position].published)
