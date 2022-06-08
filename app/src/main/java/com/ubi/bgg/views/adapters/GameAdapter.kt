@@ -2,6 +2,7 @@ package com.ubi.bgg.views.adapters
 
 import android.annotation.SuppressLint
 import android.app.Activity
+import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.view.LayoutInflater
 import android.view.View
@@ -24,8 +25,10 @@ class GameAdapter(private val context: Activity, private val list: List<Game>) :
   override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
     binding = LiGameBinding.inflate(LayoutInflater.from(context), parent, false)
 
+    if (thumbnails.containsKey(position).not() && list[position].thumbnail != null)
+      thumbnails[position] = thumbnail(list[position].thumbnail!!)
 
-    list[position].thumbnail?.let { thumbnail(it) }
+    binding.ivThumbnail.setImageBitmap(thumbnails[position])
     binding.tvOrderNo.text = (position + 1).toString()
     binding.tvTitle.text = list[position].title
     binding.tvYear.text = year(list[position].published)
@@ -38,15 +41,13 @@ class GameAdapter(private val context: Activity, private val list: List<Game>) :
     return binding.root
   }
 
-  private fun thumbnail(url: String) {
-
-    runBlocking {
-      withContext(Dispatchers.IO) {
-        val bitmap = BitmapFactory.decodeStream(URL(url).openConnection().getInputStream())
-        binding.ivThumbnail.setImageBitmap(bitmap)
-      }
+  private fun thumbnail(url: String) = runBlocking {
+    withContext(Dispatchers.IO) {
+      BitmapFactory.decodeStream(URL(url).openConnection().getInputStream())
     }
   }
+
+  private val thumbnails: HashMap<Int, Bitmap> = hashMapOf()
 
   private fun year(year: Int?) = year?.toString() ?: "N/D"
   private fun rank(rank: Int?) = "ranking - ${rank?.toString() ?: "nie oceniony"}"
