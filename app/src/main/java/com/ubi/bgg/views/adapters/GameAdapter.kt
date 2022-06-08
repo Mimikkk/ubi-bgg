@@ -14,7 +14,6 @@ import com.ubi.bgg.Common
 import com.ubi.bgg.R
 import com.ubi.bgg.database.entities.Game
 import com.ubi.bgg.databinding.LiGameBinding
-import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withContext
