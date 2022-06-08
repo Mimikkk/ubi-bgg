@@ -19,7 +19,6 @@ class ExpansionListActivity : AppCompatActivity() {
     setSupportActionBar(binding.toolbar.root)
     setContentView(binding.root)
 
-    println("items: ${Common.Database.games().readAll()}")
     items = Common.Database.games().readAll().filter { it.isExpansion }.toMutableList()
     adapter = GameAdapter(this, items)
     binding.listview.adapter = adapter

@@ -32,7 +32,5 @@ private fun migrate(thing: Thing) {
 private fun rank(thing: Thing, game: Game): Rank =
   Rank(thing.rank!!, thing.bayesaverage!!, Date.format(Date.local()), game.id)
 
-private fun game(thing: Thing): Game {
-  println("${thing.name} (${thing.isExpansion})")
-  return Game(thing.name!!, thing.thumbnail, thing.yearpublished, thing.id!!, thing.isExpansion!!)
-}
+private fun game(thing: Thing): Game =
+  Game(thing.name!!, thing.thumbnail, thing.yearpublished, thing.id!!, thing.isExpansion!!)
